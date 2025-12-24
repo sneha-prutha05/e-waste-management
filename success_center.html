@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Center Registered</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #eaf4ee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .message {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,128,0,0.15);
+        }
+        h2 {
+            color: #2e8b57;
+        }
+        p {
+            color: #444;
+            font-size: 16px;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #2e8b57;
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        a:hover {
+            background-color: #256f47;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">
+        <h2>✅ Recycling Center Registered Successfully!</h2>
+        <p><strong>Center Name:</strong> {{ center_name }}</p>
+        <p><strong>Center ID:</strong> {{ center_id }}</p>
+        <a href="/register_center">Register Another</a>
+        <a href="/view_centers">View Centers</a>
+    </div>
+</body>
+</html>

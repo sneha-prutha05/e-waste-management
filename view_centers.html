@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registered Recycling Centers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f7;
+      padding: 40px;
+      text-align: center;
+    }
+    h1 {
+      color: #2e7d32;
+      margin-bottom: 20px;
+    }
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      width: 90%;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: center;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    .no-data {
+      color: #777;
+      font-size: 18px;
+      margin-top: 30px;
+    }
+    a {
+      text-decoration: none;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 30px;
+    }
+    a:hover {
+      background-color: #388E3C;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🏭 Registered Recycling Centers</h1>
+
+  {% if centers %}
+  <table>
+    <tr>
+      <th>Center ID</th>
+      <th>Center Name</th>
+      <th>Location</th>
+      <th>Contact Person</th>
+      <th>Phone</th>
+      <th>Email</th>
+    </tr>
+    {% for c in centers %}
+    <tr>
+      <td>{{ c.center_id }}</td>
+      <td>{{ c.center_name }}</td>
+      <td>{{ c.location }}</td>
+      <td>{{ c.contact_person }}</td>
+      <td>{{ c.phone }}</td>
+      <td>{{ c.email }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <div class="no-data">No centers found in the database.</div>
+  {% endif %}
+
+  <a href="/register_center">➕ Register New Center</a>
+  <a href="/">🏠 Home</a>
+
+</body>
+</html>

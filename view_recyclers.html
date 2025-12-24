@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recycler Information</title>
+    <style>
+        body { background-color: #e3f2fd; font-family: Arial; text-align: center; }
+        table { margin: 20px auto; border-collapse: collapse; width: 90%; background: #ffffff; box-shadow: 0 0 10px #ccc; }
+        th, td { border: 1px solid #ccc; padding: 10px; }
+        th { background: #1565c0; color: white; }
+        tr:nth-child(even) { background: #e3f2fd; }
+        h2 { color: #0d47a1; }
+        a { text-decoration: none; color: #0d47a1; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h2>♻️ Registered Recyclers</h2>
+
+    {% if recyclers %}
+    <table>
+        <tr>
+            <th>Recycler ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+        </tr>
+        {% for r in recyclers %}
+        <tr>
+            <td>{{ r.user_id }}</td>
+            <td>{{ r.name }}</td>
+            <td>{{ r.email }}</td>
+            <td>{{ r.phone }}</td>
+            <td>{{ r.address }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No recyclers found in the database.</p>
+    {% endif %}
+
+    <a href="/">🏠 Back to Home</a>
+
+</body>
+</html>

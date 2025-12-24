@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Registered Successfully</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #eaf4ee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .success-box {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 128, 0, 0.2);
+            width: 420px;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        h2 {
+            color: #2e8b57;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 16px;
+            color: #333;
+        }
+        .tick {
+            font-size: 50px;
+            color: #2e8b57;
+            margin-bottom: 15px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #2e8b57;
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        a:hover {
+            background-color: #256f47;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-box">
+        <div class="tick">✅</div>
+        <h2>Item Registered Successfully!</h2>
+        <p>Your item <strong>{{ name }}</strong> has been added to the E-Waste collection system.</p>
+        <a href="/register_item">Register Another Item</a>
+        <a href="/view_items" style="margin-left:10px;">View All Items</a>
+    </div>
+</body>
+</html>

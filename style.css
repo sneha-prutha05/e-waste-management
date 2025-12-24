@@ -1,0 +1,24 @@
+/* General button styling */
+button, .btn {
+  background-color: #007bff;  /* blue color */
+  color: white;
+  font-size: 18px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background-color: #0056b3;  /* darker blue when hovered */
+}
+
+/* Optional: center buttons on page */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}

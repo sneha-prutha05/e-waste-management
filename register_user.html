@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register User - E-Waste Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #a8e063, #56ab2f);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #2e7d32;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 40px 50px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2e7d32;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 10px;
+            background-color: #2e7d32;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #256428;
+            transform: scale(1.03);
+        }
+
+        .back-btn {
+            background: #fff;
+            color: #2e7d32;
+            border: 2px solid #2e7d32;
+            margin-top: 10px;
+        }
+
+        .back-btn:hover {
+            background-color: #e8f5e9;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Register New User</h2>
+        <form method="POST" action="/register_user">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter full name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter email address" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter phone number" required>
+
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" placeholder="Enter address" required>
+
+            <label for="user_type">User Type</label>
+            <select id="user_type" name="user_type" required>
+                <option value="">Select Type</option>
+                <option value="Citizen">Citizen</option>
+                <option value="Recycler">Recycler</option>
+            </select>
+
+            <button type="submit">Register User</button>
+        </form>
+
+        <button class="back-btn" onclick="window.location.href='/'">⬅ Back to Home</button>
+    </div>
+</body>
+</html>

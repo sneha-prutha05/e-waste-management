@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Recycling Center</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #eaf4ee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 128, 0, 0.15);
+            width: 420px;
+            padding: 30px 40px;
+            text-align: center;
+        }
+        h2 {
+            color: #2e8b57;
+            margin-bottom: 25px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 10px;
+            border: 1px solid #b2d8b2;
+            font-size: 15px;
+        }
+        button {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #256f47;
+        }
+        a {
+            display: block;
+            margin-top: 15px;
+            color: #2e8b57;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register Recycling Center</h2>
+        <form action="/register_center" method="POST">
+            <input type="text" name="center_name" placeholder="Center Name" required>
+            <input type="text" name="location" placeholder="Location">
+            <input type="text" name="contact_person" placeholder="Contact Person">
+            <input type="text" name="phone" placeholder="Phone Number">
+            <input type="email" name="email" placeholder="Email">
+            <button type="submit">Register Center</button>
+        </form>
+        <a href="/view_centers">View All Centers</a>
+    </div>
+</body>
+</html>

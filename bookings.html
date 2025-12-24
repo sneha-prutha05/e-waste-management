@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book E-Waste Collection</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #34495e;
+    }
+
+    select, input[type="text"], button {
+      width: 100%;
+      margin-top: 8px;
+      margin-bottom: 18px;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background-color: #1e8449;
+    }
+
+    .message {
+      text-align: center;
+      font-weight: 600;
+      color: #16a085;
+      margin-bottom: 15px;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #2980b9;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📦 Book E-Waste Collection</h1>
+
+    {% if message %}
+      <p class="message">{{ message }}</p>
+    {% endif %}
+
+    <form method="POST" action="/bookings">
+      <label for="item_id">Select Item ID:</label>
+      <select name="item_id" required>
+        {% for item in items %}
+          <option value="{{ item.item_id }}">{{ item.item_id }} - {{ item.item_name }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="citizen_id">Enter Citizen ID:</label>
+      <input type="text" name="citizen_id" placeholder="Enter Citizen ID" required>
+
+      <label for="recycler_id">Enter Recycler ID:</label>
+      <input type="text" name="recycler_id" placeholder="Enter Recycler ID" required>
+
+      <button type="submit">Confirm Booking</button>
+    </form>
+
+    <a href="{{ url_for('view_bookings') }}" class="back-link">View Bookings →</a>
+    <a href="{{ url_for('home') }}" class="back-link">← Back to Home</a>
+  </div>
+</body>
+</html>

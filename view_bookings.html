@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View E-Waste Bookings</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    table th {
+      background-color: #2980b9;
+      color: white;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .no-data {
+      text-align: center;
+      color: #7f8c8d;
+      font-weight: 500;
+      margin-top: 15px;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #2980b9;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📋 Your Bookings</h1>
+
+    {% if bookings %}
+      <table>
+        <thead>
+          <tr>
+            <th>Booking ID</th>
+            <th>Item ID</th>
+            <th>Item Name</th>
+            <th>Citizen ID</th>
+            <th>Recycler ID</th>
+            <th>Booking Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for b in bookings %}
+            <tr>
+              <td>{{ b.booking_id }}</td>
+              <td>{{ b.item_id }}</td>
+              <td>{{ b.item_name }}</td>
+              <td>{{ b.citizen_id }}</td>
+              <td>{{ b.recycler_id }}</td>
+              <td>{{ b.booking_date }}</td>
+              <td>{{ b.status }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p class="no-data">No bookings found.</p>
+    {% endif %}
+
+    <a href="{{ url_for('bookings') }}" class="back-link">← Book New Item</a>
+    <a href="{{ url_for('home') }}" class="back-link">← Back to Home</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User & Item Records</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        .table-container {
+            overflow-x: auto; /* Adds scroll if content exceeds box width */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px 12px;
+        }
+
+        th {
+            background-color: #2980b9;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f6f9;
+        }
+
+        tr:hover {
+            background-color: #eaf2f8;
+            transition: 0.3s;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 18px;
+            background-color: #2980b9;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: #1f6391;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registered Users & E-Waste Items</h1>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>User Name</th>
+                        <th>Contact</th>
+                        <th>Item ID</th>
+                        <th>Item Name</th>
+                        <th>Item Type</th>
+                        <th>Condition</th>
+                        <th>Status</th>
+                        <th>Date Added</th>
+                        <th>Collection Confirm</th>
+                        <th>Recycling Confirm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in records %}
+                    <tr>
+                        <td>{{ record.user_id }}</td>
+                        <td>{{ record.user_name }}</td>
+                        <td>{{ record.contact }}</td>
+                        <td>{{ record.item_id }}</td>
+                        <td>{{ record.item_name }}</td>
+                        <td>{{ record.item_type }}</td>
+                        <td>{{ record.condition_desc }}</td>
+                        <td>{{ record.status }}</td>
+                        <td>{{ record.date_added }}</td>
+                        <td>{{ record.collection_confirm }}</td>
+                        <td>{{ record.recycling_confirm }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a href="{{ url_for('home') }}" class="back-btn">← Back to Home</a>
+    </div>
+</body>
+</html>

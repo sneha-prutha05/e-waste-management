@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>E-Waste Management System</title>
+    <style>
+        :root{
+            --green1:#a8e063;
+            --green2:#56ab2f;
+            --accent:#2e7d32;
+            --card:#ffffff;
+            --redlink:#d32f2f;
+            --muted:#f3f7f3;
+        }
+        html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,var(--green1),var(--green2));color:#fff}
+        header{padding:26px 20px;text-align:center}
+        header h1{margin:0;font-size:2.6rem;letter-spacing:0.2rem}
+        header p{margin:8px 0 0;font-size:1rem;opacity:0.95}
+
+        .wrap{max-width:1100px;margin:28px auto;padding:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+        .card{background:var(--card);color:var(--accent);border-radius:14px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.12);min-height:150px;display:flex;flex-direction:column;justify-content:space-between}
+        .card h2{margin:0 0 8px;font-size:1.25rem}
+        .card p{margin:0 0 14px;color:#2f4f2f;opacity:0.9;font-size:0.95rem}
+        .actions{display:flex;gap:12px;align-items:center}
+        .btn-open{background:var(--accent);color:#fff;border:0;padding:12px 20px;border-radius:10px;font-weight:700;cursor:pointer;box-shadow:0 6px 14px rgba(46,125,50,0.18)}
+        .btn-open:hover{transform:translateY(-2px)}
+        .view-link{display:block;margin-top:12px;color:var(--redlink);font-weight:700;text-decoration:none}
+        .small{font-size:0.92rem;color:#4b6f4b}
+        footer{max-width:1100px;margin:18px auto;text-align:center;color:#eaf6ea;font-size:0.95rem}
+        @media (max-width:420px){header h1{font-size:1.8rem}}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>♻️ E-Waste Management System</h1>
+        <p>Reduce · Reuse · Recycle — admin & operational dashboard</p>
+    </header>
+
+    <main class="wrap">
+        <!-- Users -->
+        <section class="card">
+            <div>
+                <h2>Register User</h2>
+                <p class="small">Register citizens and recyclers. Fields: name, email, phone, address, user_type.</p>
+            </div>
+            <div class="actions">
+                <button class="btn-open" onclick="location.href='/register_user'">Open</button>
+                <a class="view-link" href="/view_users">🔴 View Registered Users</a>
+            </div>
+        </section>
+
+        <!-- E-Waste Items -->
+        <section class="card">
+            <div>
+                <h2>Register E-Waste Item</h2>
+                <p class="small">Citizen registers item: item_name, item_type, condition_desc. Default status = Pending.</p>
+            </div>
+            <div class="actions">
+                <button class="btn-open" onclick="location.href='/register_item'">Open</button>
+                <a class="view-link" href="/view_items">🔴 View Registered Items</a>
+            </div>
+        </section>
+
+        <!-- Recycling Centers -->
+        <section class="card">
+            <div>
+                <h2>Recycling Centers</h2>
+                <p class="small">Register authorized recycling centers: center_name, location, contact_person, phone, email.</p>
+            </div>
+            <div class="actions">
+                <button class="btn-open" onclick="location.href='/register_center'">Open</button>
+                <a class="view-link" href="/view_centers">🔴 View All Centers</a>
+            </div>
+        </section>
+
+        <!-- Recycler Info Section -->
+<div class="card">
+    <h3>Recycler Info</h3>
+    <p>View details of all registered recyclers.</p>
+    <div class="buttons">
+                <button class="btn-open" onclick="location.href='/view_recyclers'">Open</button>
+    </div>
+</div>
+
+        <!-- User-Item Combined -->
+        <section class="card">
+            <div>
+                <h2>User — Item Records</h2>
+                <p class="small">Combined view of users + their items (vw_user_items). Useful for status and audit.</p>
+            </div>
+            <div class="actions">
+                <button class="btn-open" onclick="location.href='/view_user_items'">Open</button>
+            </div>
+        </section>
+
+        <!-- Status Confirmation -->
+        <section class="card">
+            <div>
+                <h2>Status Confirmation</h2>
+                <p class="small">Open collection / recycling flows. Two-party confirmation required (citizen+recycler, recycler+center).</p>
+            </div>
+            <div class="actions">
+                <button class="btn-open" onclick="location.href='/status_confirmation'">Open</button>
+            </div>
+        </section>
+
+        <!-- Audit Log -->
+        <section class="card">
+            <div>
+                <h2>Audit Log</h2>
+                <p class="small">View the ewaste_audit table — all status changes and confirmations are recorded here.</p>
+            </div>
+            <div class="actions">
+                <button class="btn-open" onclick="location.href='/view_audit_log'">Open</button>
+            </div>
+        </section>
+
+        <!-- Booking Section (Home Page) -->
+<section class="card">
+  <h2 style="text-align:center; color:#2c3e50;">📦 E-Waste Booking</h2>
+  <p style="text-align:center; color:#555; margin-bottom:15px;">
+    Manage your e-waste collection effortlessly — book a pickup or view your past bookings below.
+  </p>
+
+  <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:20px;">
+    <a href="{{ url_for('view_bookings') }}" 
+       style="background-color:#27ae60; color:white; text-decoration:none; 
+              padding:12px 25px; border-radius:10px; font-weight:600; 
+              box-shadow:0 2px 10px rgba(0,0,0,0.1);">
+      ➕ Book New Collection
+    </a>
+
+    <a href="{{ url_for('view_bookings') }}" 
+       style="background-color:#2980b9; color:white; text-decoration:none; 
+              padding:12px 25px; border-radius:10px; font-weight:600; 
+              box-shadow:0 2px 10px rgba(0,0,0,0.1);">
+      📋 View My Bookings
+    </a>
+  </div>
+</section>
+
+
+
+
+    
+</body>
+</html>

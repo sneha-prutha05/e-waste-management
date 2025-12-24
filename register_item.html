@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register E-Waste Item</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #eaf4ee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 128, 0, 0.15);
+            width: 420px;
+            padding: 30px 40px;
+            text-align: center;
+        }
+        h2 {
+            color: #2e8b57;
+            margin-bottom: 25px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 10px;
+            border: 1px solid #b2d8b2;
+            font-size: 15px;
+        }
+        button {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #256f47;
+        }
+        a {
+            display: block;
+            margin-top: 15px;
+            color: #2e8b57;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register E-Waste Item</h2>
+        <form action="/register_item" method="POST">
+            <input type="number" name="user_id" placeholder="Enter Your User ID" required>
+            <input type="text" name="item_name" placeholder="Item Name" required>
+            <input type="text" name="item_type" placeholder="Item Type (e.g. Laptop, Phone)">
+            <textarea name="condition_desc" placeholder="Condition Description" rows="3"></textarea>
+            <button type="submit">Register Item</button>
+        </form>
+        <a href="/view_items">View Registered Items</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Confirmation</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 25px;
+        }
+
+        .tab-buttons button {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tab-buttons button:hover {
+            background-color: #1f6391;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        label {
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        select, input[type="text"], button {
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button.submit-btn {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button.submit-btn:hover {
+            background-color: #1e8449;
+        }
+
+        .message {
+            text-align: center;
+            font-weight: 600;
+            color: #16a085;
+        }
+
+        .back-btn {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Status Confirmation</h1>
+
+        <div class="tab-buttons">
+            <button onclick="showTab('collection')">Collection</button>
+            <button onclick="showTab('recycling')">Recycling</button>
+        </div>
+
+        <!-- Collection Confirmation -->
+        <div id="collection" class="form-section {% if active_tab == 'collection' or not active_tab %}active{% endif %}">
+            <form method="POST" action="/confirm_collection">
+                <label for="item_id">Select Item ID:</label>
+                <select name="item_id" required>
+                    {% for item in items %}
+                        <option value="{{ item.item_id }}" {% if selected_item == item.item_id|string %}selected{% endif %}>
+                            {{ item.item_id }} - {{ item.item_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <h3>Citizen Confirmation</h3>
+                <label for="citizen_id">Enter Citizen ID:</label>
+                <input type="text" name="citizen_id" placeholder="Enter Citizen ID"
+                       value="{{ citizen_id or '' }}">
+                <button type="submit" name="confirm_type" value="citizen" class="submit-btn">
+                    Confirm as Citizen
+                </button>
+
+                <h3>Recycler Confirmation</h3>
+                <label for="recycler_id">Enter Recycler ID:</label>
+                <input type="text" name="recycler_id" placeholder="Enter Recycler ID"
+                       value="{{ recycler_id or '' }}">
+                <button type="submit" name="confirm_type" value="recycler" class="submit-btn">
+                    Confirm as Recycler
+                </button>
+            </form>
+        </div>
+
+        <!-- Recycling Confirmation -->
+        <div id="recycling" class="form-section {% if active_tab == 'recycling' %}active{% endif %}">
+            <form method="POST" action="/confirm_recycling">
+                <label for="item_id">Select Item ID:</label>
+                <select name="item_id" required>
+                    {% for item in items %}
+                        <option value="{{ item.item_id }}" {% if selected_item == item.item_id|string %}selected{% endif %}>
+                            {{ item.item_id }} - {{ item.item_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <h3>Recycler Confirmation</h3>
+                <label for="recycler_id">Enter Recycler ID:</label>
+                <input type="text" name="recycler_id" placeholder="Enter Recycler ID"
+                       value="{{ recycler_id or '' }}">
+                <button type="submit" name="confirm_type" value="recycler" class="submit-btn">
+                    Confirm as Recycler
+                </button>
+
+                <h3>Center Confirmation</h3>
+                <label for="center_id">Enter Center ID:</label>
+                <input type="text" name="center_id" placeholder="Enter Center ID"
+                       value="{{ center_id or '' }}">
+                <button type="submit" name="confirm_type" value="center" class="submit-btn">
+                    Confirm as Center
+                </button>
+            </form>
+        </div>
+
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
+
+        <a href="{{ url_for('home') }}" class="back-btn">← Back to Home</a>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.form-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+        }
+    </script>
+</body>
+</html>

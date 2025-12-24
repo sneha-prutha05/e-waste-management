@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Updated Successfully</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .success-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #2c3e50;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background-color: #2980b9;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: #1f6391;
+        }
+
+        .emoji {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-card">
+        <div class="emoji">✅</div>
+        <h1>Confirmation Successful!</h1>
+        <p>{{ message }}</p>
+        <a href="/status_confirmation" class="back-btn">← Go Back</a>
+    </div>
+</body>
+</html>

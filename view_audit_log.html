@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Log</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2e86de;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f0f3f5;
+        }
+
+        .section {
+            margin-top: 40px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 15px;
+            background-color: #27ae60;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background-color: #1e8449;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>E-Waste Audit Log</h2>
+
+        <div class="section">
+            <h3>🧾 ewaste_audit</h3>
+            {% if ewaste_audit %}
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Item ID</th>
+                    <th>User ID</th>
+                    <th>Old Status</th>
+                    <th>Change Type</th>
+                    <th>Changed On</th>
+                </tr>
+                {% for row in ewaste_audit %}
+                <tr>
+                    <td>{{ row.audit_id }}</td>
+                    <td>{{ row.item_id }}</td>
+                    <td>{{ row.user_id }}</td>
+                    <td>{{ row.old_status }}</td>
+                    <td>{{ row.change_type }}</td>
+                    <td>{{ row.changed_on }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+                <p style="text-align:center; color:#888;">No audit data available.</p>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <h3>🪪 item_log</h3>
+            {% if item_log %}
+            <table>
+                <tr>
+                    <th>Log ID</th>
+                    <th>Item ID</th>
+                    <th>User ID</th>
+                    <th>Action</th>
+                    <th>Log Time</th>
+                </tr>
+                {% for log in item_log %}
+                <tr>
+                    <td>{{ log.log_id }}</td>
+                    <td>{{ log.item_id }}</td>
+                    <td>{{ log.user_id }}</td>
+                    <td>{{ log.action }}</td>
+                    <td>{{ log.log_time }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+                <p style="text-align:center; color:#888;">No log entries available.</p>
+            {% endif %}
+        </div>
+
+        <a href="{{ url_for('home') }}" class="back-btn">← Back</a>
+    </div>
+</body>
+</html>
